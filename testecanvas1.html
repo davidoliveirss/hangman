@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teste1 David</title>
+    <script>
+        function draw() {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "green";
+
+            ctx.font = "bold 48px serif";
+            let mt = ctx.measureText("ola");
+            console.log(mt)
+            ctx.fillText("ola",20,60);
+            
+            ctx.moveTo(20,60);
+            ctx.lineTo(20+mt.width,60);
+            ctx.lineTo(20+mt.width,60-mt.fontBoundingBoxAscent);
+            ctx.lineTo(20,60-mt.fontBoundingBoxAscent);
+            ctx.lineTo(20,60);
+            
+            ctx.stroke();
+        }
+
+        function drawParte(ctx, n) {
+            switch (n) {
+                case 0:
+                    ctx.moveTo(20,150);
+                    ctx.lineTo(180,150);
+                    break;
+                case 1:
+                    ctx.moveTo(80,150);
+                    ctx.lineTo(80,50);
+                    break;
+
+            }
+        }
+
+
+        function drawBoneco(n) {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "blue";
+
+            drawParte(ctx,0);
+            drawParte(ctx,1);
+            
+            ctx.stroke();
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="btn1" onclick="drawBoneco(10)">Botao</button>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+</body>
+
+</html>
